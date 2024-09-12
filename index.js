@@ -20,7 +20,7 @@ const salvarMetas = async () => {
 }
 
 const cadastrarMeta = async () => {
-    const meta = await input({ message: "Digite a meta: "}) // await espera o urser dar um comando a marquina
+    const meta = await input({ message: "Digite a meta: "}) // await espera o user dá um comando para marquina
 
     if(meta.length == 0) {
         mensagem = "A meta não pode ser vazia!"
@@ -29,8 +29,8 @@ const cadastrarMeta = async () => {
     }
 
     metas.push(
-        {value: meta, checked: false}
-        // push ele vai empurrar os dados para o arrays
+        { value: meta, checked: false }
+        // push ele vai empurrar os dados para o array
     )
 
     mensagem = "Meta cadastrada com sucesso! :)"
@@ -89,7 +89,7 @@ const metasAbertas = async () => {
         mensagem = "Não exitem nenhuma meta aberta! "
         return
     }
-    
+
     const abertas = metas.filter((meta) => {
         return meta.checked != true
         //outra maneira de fazer essa comparação é:
@@ -98,6 +98,7 @@ const metasAbertas = async () => {
 
     if(abertas.length == 0) {
         mensagem = "não exitem metas abertas! :)"
+        return
     }
 
     await select({
@@ -182,7 +183,7 @@ const  start = async () => {
                 name: "Sair",
                 value: "sair"
             }
-        ]
+            ]
 
         })
 
