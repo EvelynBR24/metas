@@ -59,7 +59,7 @@ const metasRealizadas = async () => {
     }
 
     await select({
-        message: "Metas ralizadas " + realizadas.length,
+        message: "metas ralizadas: " + realizadas.length,
         choices: [...realizadas]
         // caso nn tenha nenhuma opção marcada, ele vai dar um problema
         // corrigir mais tarde
@@ -78,9 +78,35 @@ const metasAbertas = async () => {
     }
 
     await select({
-        message: "Metas abertas " + abertas.length,
+        message: "Metas abertas: " + abertas.length,
         choices: [...abertas]
     })
+}
+
+const removerMetas = async () => {
+    const metasDesmarcadas = metas.map((meta) => { //O map modifica a array original
+        return {value: meta.value, checked: false}
+        //outra maneira de fazer "meta.checked = false"
+    })
+
+    const itensRemovido = await checkbox({
+        message: "Selecione um item para remover!",
+        choices: [...metasDesmarcadas],
+        instructions: false
+    })
+
+    if(itensRemovido.length == 0) {
+        console.log("Nnehum item para remover!")
+        return
+    }
+
+    itensRemovido.forEach((item) => {
+        metas = metas.filter((meta) => {
+            return meta.value != item
+        })
+    })
+
+    console.log("Meta(s) removidas com sucesso! :)")
 }
 
 const  start = async () => {
@@ -100,12 +126,16 @@ const  start = async () => {
                 value: "listar"
             },
             {
-                name: "Metas realizadas",
+                name: "metas realizadas",
                 value: "realizadas"
             },
             {
                 name: "Metas abertas",
                 value: "abertas"
+            },
+            {
+                name: "Remover metas",
+                value: "remover"
             },
             {
                 name: "Sair",
@@ -133,6 +163,10 @@ const  start = async () => {
                 await metasAbertas()
                 break
 
+            case "remover":
+                await removerMetas()
+                break
+            
             case "sair":
                 console.log("Até aproxima!")
                 return
