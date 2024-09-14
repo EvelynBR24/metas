@@ -2,13 +2,13 @@
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
 
 <p align="center">
-  <img alt="projeto DevLinks" src="menu.png" width="50%">
+  <img alt="projeto Controle de metas" src="menu.png" width="50%">
 </p>
 
 ## 🚀 Tecnologias
